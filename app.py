@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask
 import json
 import functions
@@ -56,7 +58,7 @@ app_data  = {
     ],
     'articles': [
         {
-            'id':1,
+            'id': 1,
             'author': 5,
             'title': 'Article 1',
             'text': 'Article 1. Unfortunately, many effective as they could be. In fact, Fast Company reports that 74% of younger workers leave reviews unsure about what their managers actually think of their performance.',
@@ -84,24 +86,24 @@ app_data  = {
 def get_all_articles():
     articles_array = []
     for article in app_data['articles']:
-        article = functions.get_article_by_id(article['id'], app_data)
-        articles_array.append(article)
+        a = functions.get_article_by_id(article['id'], app_data)
+        articles_array.append(a)
     return json.dumps(articles_array, sort_keys=True, indent=2)
 
 #GET /api/articles/<id>
 @app.route('/api/articles/<int:article_id>')
 def get_article_id(article_id):
-    article = functions.get_article_by_id(article_id, app_data)
-    return json.dumps(article, sort_keys=True, indent=2)
+    a = functions.get_article_by_id(article_id, app_data)
+    return json.dumps(a, sort_keys=True, indent=2)
 
 #PUT /api/comments/1
-@app.route('/api/comments/<int:comment_id>')
+@app.route('/api/comments/<int:comment_id>', methods=['PUT'])
 def put_comment(comment_id):
     return 'PUT /api/comments/%d' % comment_id
     #{"success": true}
 
 #PUT /api/user/1
-@app.route('/api/user/<int:user_id>')
+@app.route('/api/user/<int:user_id>', methods=['PUT'])
 def put_user(user_id):
     return 'PUT /api/user/%d' % user_id
     #{"success": true}
@@ -114,4 +116,4 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4567, debug=True)
+    app.run(host='0.0.0.0', port=4567)
