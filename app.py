@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask
+from flask_cors import CORS
 from flask import request
 from flask import Response
 import json
@@ -8,6 +9,7 @@ import get_functions
 import put_functions
 
 app = Flask(__name__)
+cors = CORS(app)
 
 #app_data
 app_data = get_functions.read_data()
