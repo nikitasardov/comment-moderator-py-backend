@@ -61,21 +61,21 @@ def read_data(path = 'data.json'):
                 {
                     'id': 1,
                     'author': 5,
-                    'title': 'Article 1',
+                    'title': 'Cucumbers recalled in salmonella outbreak',
                     'text': 'Article 1. Unfortunately, many effective as they could be. In fact, Fast Company reports that 74% of younger workers leave reviews unsure about what their managers actually think of their performance.',
                     'comments': [1, 3, 7]
                 },
                 {
                     'id': 2,
                     'author': 2,
-                    'title': 'Article 2',
+                    'title': 'Hungary migrant stand-off continues',
                     'text': 'Article 2. Gulper eel collared carpetshark electric ray bream yellowtail bigeye squaretail zebra oto skipjack tuna bull shark. Guitarfish gulf menhaden golden trout amur pike sauger Bombay duck, angelfish, sandburrower; buffalofish channel catfish panga pikeperch knifejaw Antarctic icefish? Cutthroat trout telescopefish roosterfish pejerrey eulachon alooh sea bream. North American darter Kafue pike velvet catfish soldierfish northern anchovy trench threadfin bream New World rivuline rockling antenna codlet." Trevally barbeled houndshark grunion tubeblenny sleeper shark madtom walking catfish merluccid hake.',
                     'comments': [2, 4]
                 },
                 {
                     'id': 3,
                     'author': 1,
-                    'title': 'Article 3',
+                    'title': 'Kapoor sculpture vandalized again',
                     'text': 'Article 3. Slimy mackerel char; three-toothed puffer pilchard; splitfin hawkfish butterfly ray Australasian salmon. Mouthbrooder morid cod redmouth whalefish boxfish trout-perch; channel catfish, lemon sole, sailback scorpionfish saury ghost carp whale shark.',
                     'comments': [5, 6]
                 }
