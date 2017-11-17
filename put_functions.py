@@ -33,6 +33,7 @@ def put_user_info(user_id, new_name, app_data):
     id_found = False
     for user in app_data['users']:
         if user['id'] == user_id:
+            id_found = True
             new_users.append({'id': user_id, 'name': new_name})
         else:
             new_users.append(user)

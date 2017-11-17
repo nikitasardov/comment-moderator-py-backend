@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
-from flask import Flask
-from flask_cors import CORS
-from flask import request
-from flask import Response
+from flask import Flask, request, Response
+#from flask_cors import CORS
 import json
 import get_functions
 import put_functions
 
+
 app = Flask(__name__)
-cors = CORS(app)
+#cors = CORS(app)
 
 #app_data
 app_data = get_functions.read_data()
@@ -21,7 +20,7 @@ def to_json(data):
 def resp(code, data):
     return Response(
         status=code,
-        mimetype="application/json",
+#        mimetype="application/json",
         response=to_json(data)
     )
 
@@ -60,7 +59,26 @@ def put_user(user_id):
 def page_not_found(error):
     #return 'incorrect api address', 400
     bad_request = {'message':'incorrect api address'}
-    return resp(400, bad_request)
+    return resp(404, bad_request)
+
+@app.errorhandler(500)
+def internal_error(error):
+    #    e = {'message':'internal error'}
+    return resp(500, {'message':'internal error'})
+
+@app.errorhandler(400)
+def internal_error(error):
+
+    return 400, request.headers
+
+@app.after_request
+def _headers__(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS, PUT'
+    response.headers['Content-Type'] = 'application/json; charset=utf-8'
+
+    return response
 
 if __name__ == '__main__':
     app.debug = True
