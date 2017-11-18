@@ -42,7 +42,8 @@ def get_article_id(article_id):
 #PUT /api/comments/1
 @app.route('/api/comments/<int:comment_id>', methods=['PUT'])
 def put_comment(comment_id):
-    if put_functions.put_comment_info(comment_id, request.form['text'], app_data):
+    data = request.json
+    if put_functions.put_comment_info(comment_id, data['text'], app_data):
         return resp(200, {'success': True})
     else:
         return resp(500, {'success': False})
@@ -50,7 +51,8 @@ def put_comment(comment_id):
 #PUT /api/user/1
 @app.route('/api/user/<int:user_id>', methods=['PUT'])
 def put_user(user_id):
-    if put_functions.put_user_info(user_id, request.form['name'], app_data):
+    data = request.json
+    if put_functions.put_user_info(user_id, data['name'], app_data):
         return resp(200, {'success': True})
     else:
         return resp(500, {'success': False})
