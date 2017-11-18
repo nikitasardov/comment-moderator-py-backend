@@ -9,6 +9,7 @@ import put_functions
 
 app = Flask(__name__)
 #cors = CORS(app)
+#cors headers are sent with after_request
 
 #app_data
 app_data = get_functions.read_data()
@@ -73,8 +74,9 @@ def internal_error(error):
 
     return 400, request.headers
 
+# sends cors headers
 @app.after_request
-def _headers__(response):
+def cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS, PUT'
